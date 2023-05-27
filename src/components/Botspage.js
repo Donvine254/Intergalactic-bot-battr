@@ -37,15 +37,13 @@ const BotsPage = () => {
     const existingBotClass = swarm.find((botInSwarm) => botInSwarm.bot_class === botClass)
     if (!swarm.includes(bot) && !existingBotClass) {
       setSwarm((prevBots) => [...prevBots, bot]);
-      setSelectedBotClasses(bot.bot_class);
-      console.log(selectedBotClasses);
       setDisplayedBots(
         displayedBots.filter((displayedBot) => displayedBot.id !== bot.id)
       );
 
       Swal.fire({
         title: "Bot Enlisted",
-        text: `${bot.name} has been added to your army.`,
+        text: `A ${botClass} bot named ${bot.name} has been added to your army.`,
         icon: "success",
         button: "OK",
         timer: 3000,
