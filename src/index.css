@@ -50,12 +50,23 @@ body {
   color: #61dafb;
 }
 select {
-  margin: 20px;
   padding: 0 20px; ;
   background-color: rgb(27, 179, 179);
   color:white;
-  min-width: 200px;
+  width:100%;
   height: max-content;
+  min-height: 40px;
   font-size:20px;
   border-radius: 10px;
+
+}
+.filter-container{
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter, .sort{
+  display:inline-block;
+  margin:0;
+  padding:0;
 }

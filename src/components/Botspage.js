@@ -15,6 +15,7 @@ const BotsPage = () => {
   const [swarm, setSwarm] = useState([]);
   const [displayedBots, setDisplayedBots] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedSort, setSelectedSort] = useState("All");
 
   useEffect(() => {
     const fetchBots = async () => {
@@ -30,11 +31,13 @@ const BotsPage = () => {
 
     fetchBots();
   }, []);
- //prevent enlisting a bot twice or adding bots of the same class
+  //prevent enlisting a bot twice or adding bots of the same class
 
   const enlistBot = (bot) => {
     const botClass = bot.bot_class;
-    const existingBotClass = swarm.find((botInSwarm) => botInSwarm.bot_class === botClass)
+    const existingBotClass = swarm.find(
+      (botInSwarm) => botInSwarm.bot_class === botClass
+    );
     if (!swarm.includes(bot) && !existingBotClass) {
       setSwarm((prevBots) => [...prevBots, bot]);
       setDisplayedBots(
@@ -84,7 +87,7 @@ const BotsPage = () => {
       }
     });
   };
- //function to discharge bots and delete them from backend
+  //function to discharge bots and delete them from backend
   function dischargeBot(id) {
     Swal.fire({
       title: "Are you sure?",
@@ -129,6 +132,32 @@ const BotsPage = () => {
 
     setDisplayedBots(filteredBots);
   }
+  //function to handle sorting bots by health, damage and armor
+  function handleSorting(event) {
+    const newSortCategory = event.target.value;
+    setSelectedSort(newSortCategory);
+
+    if (newSortCategory === "All") {
+      return true;
+    } else if (newSortCategory === "Health") {
+      const sortedBots = [...displayedBots].sort(
+        (botA, botB) => botB.health - botA.health
+      );
+      setDisplayedBots(sortedBots);
+    } else if (newSortCategory === "Damage") {
+      const sortedBots = [...displayedBots].sort(
+        (botA, botB) => botA.damage - botB.damage
+      );
+      setDisplayedBots(sortedBots);
+    } else if (newSortCategory === "Armor") {
+      const sortedBots = [...displayedBots].sort(
+        (botA, botB) => botB.armor - botA.armor
+      );
+      setDisplayedBots(sortedBots);
+    }
+
+    return false;
+  }
 
   return (
     <div>
@@ -140,6 +169,8 @@ const BotsPage = () => {
       <Filter
         selectedCategory={selectedCategory}
         onFilterChange={handleClassFilterChange}
+        selectedSort={selectedSort}
+        onSortChange={handleSorting}
       />
       <BotCollection
         bots={displayedBots}
