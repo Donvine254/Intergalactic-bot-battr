@@ -55,7 +55,7 @@ const BotsPage = () => {
       Swal.fire({
         title: "Opps!",
         text: "You cannot add two bots of the same class, choose wisely!",
-        icon: "warning",
+        icon: "error",
         showCancelButton: true,
         confirmButtonColor: "#00706e",
         cancelButtonColor: "#ff5154",
