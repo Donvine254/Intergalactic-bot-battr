@@ -8,10 +8,11 @@ import Swal from "sweetalert2";
 //initialize bot url for data fetching
 const baseUrl = "http://localhost:8002/bots";
 
+//if cloning this repo use "https://api.npoint.io/f2dab3b71d583e4dbdef/bots" if the npm server is not initialized
+
 const BotsPage = () => {
   const [bots, setBots] = useState([]);
   const [swarm, setSwarm] = useState([]);
-  const [selectedBotClasses, setSelectedBotClasses] = useState([]);
   const [displayedBots, setDisplayedBots] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -29,9 +30,12 @@ const BotsPage = () => {
 
     fetchBots();
   }, []);
+ //prevent enlisting a bot twice or adding bots of the same class
 
   const enlistBot = (bot) => {
-    if (!swarm.includes(bot) && !selectedBotClasses.includes(bot.bot_class)) {
+    const botClass = bot.bot_class;
+    const existingBotClass = swarm.find((botInSwarm) => botInSwarm.bot_class === botClass)
+    if (!swarm.includes(bot) && !existingBotClass) {
       setSwarm((prevBots) => [...prevBots, bot]);
       setSelectedBotClasses(bot.bot_class);
       console.log(selectedBotClasses);
@@ -82,21 +86,36 @@ const BotsPage = () => {
       }
     });
   };
-  //function to discharge bots and delete them from backend
+ //function to discharge bots and delete them from backend
   function dischargeBot(id) {
-    try {
-      fetch(`${baseUrl}/${id}`, {
-        method: "DELETE",
-      }).then(() => {
-        setBots((prevBots) => prevBots.filter((prevBot) => prevBot.id !== id));
-        setSwarm((prevSwarm) => prevSwarm.filter((bot) => bot.id !== id));
-        setDisplayedBots((prevDisplayedBots) =>
-          prevDisplayedBots.filter((bot) => bot.id !== id)
-        );
-      });
-    } catch (error) {
-      console.log("An error occurred during the API request:", error);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action will permanently remove the bot",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff5154",
+      cancelButtonColor: "#00706e",
+      cancelButtonText: "No, I made a mistake",
+      confirmButtonText: "Bye Bye Bot!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          fetch(`${baseUrl}/${id}`, {
+            method: "DELETE",
+          }).then(() => {
+            setBots((prevBots) =>
+              prevBots.filter((prevBot) => prevBot.id !== id)
+            );
+            setSwarm((prevSwarm) => prevSwarm.filter((bot) => bot.id !== id));
+            setDisplayedBots((prevDisplayedBots) =>
+              prevDisplayedBots.filter((bot) => bot.id !== id)
+            );
+          });
+        } catch (error) {
+          console.log("An error occurred during the API request:", error);
+        }
+      }
+    });
   }
   //handle bot filtering by class
   function handleClassFilterChange(event) {
