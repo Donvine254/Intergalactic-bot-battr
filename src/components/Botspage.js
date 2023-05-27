@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 //initialize bot url for data fetching
 const baseUrl = "http://localhost:8002/bots";
+//if offline, use "https://api.npoint.io/f2dab3b71d583e4dbdef/bots";
 
 const BotsPage = () => {
   const [bots, setBots] = useState([]);
