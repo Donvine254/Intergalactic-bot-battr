@@ -13,7 +13,7 @@ const baseUrl = "http://localhost:8002/bots";
 const BotsPage = () => {
   const [bots, setBots] = useState([]);
   const [swarm, setSwarm] = useState([]);
-  const [displayedBots, setDisplayedBots] = useState([]);
+  const [displayedBots, setDisplayedBots] = useState([]);//this state can be derived
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSort, setSelectedSort] = useState("All");
 
@@ -30,7 +30,7 @@ const BotsPage = () => {
     };
 
     fetchBots();
-  }, []);
+  }, [bots]);
   //prevent enlisting a bot twice or adding bots of the same class
 
   const enlistBot = (bot) => {
@@ -41,7 +41,7 @@ const BotsPage = () => {
     if (!swarm.includes(bot) && !existingBotClass) {
       setSwarm((prevBots) => [...prevBots, bot]);
       setDisplayedBots(
-        displayedBots.filter((displayedBot) => displayedBot.id !== bot.id)
+        displayedBots.filter((displayedBot) => displayedBot.id !== bot.id)//removing bot from the bot collection.c
       );
 
       Swal.fire({
