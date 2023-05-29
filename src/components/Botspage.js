@@ -23,7 +23,7 @@ const BotsPage = () => {
         const response = await axios.get(baseUrl);
         const data = response.data;
         setBots(data);
-        setDisplayedBots(data);
+        setDisplayedBots(bots);
       } catch (error) {
         console.log(error.message);
       }
@@ -120,9 +120,9 @@ const BotsPage = () => {
               prevBots.filter((prevBot) => prevBot.id !== id)
             );
             setSwarm((prevSwarm) => prevSwarm.filter((bot) => bot.id !== id));
-            setDisplayedBots((prevDisplayedBots) =>
-              prevDisplayedBots.filter((bot) => bot.id !== id)
-            );
+            // setDisplayedBots((prevDisplayedBots) =>
+            //   prevDisplayedBots.filter((bot) => bot.id !== id)
+            // );
           });
         } catch (error) {
           console.log("An error occurred during the API request:", error);
