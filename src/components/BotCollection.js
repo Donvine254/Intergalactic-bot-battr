@@ -23,7 +23,7 @@ function BotCollection({ bots, onEnlist, dischargeBot }) {
   }
 
   const botCards = bots.map((bot) => (
-    <BotCard
+    <BotCard className="bot-card"
       key={bot.id}
       bot={bot}
       botFunction={handleBotClick}

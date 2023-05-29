@@ -49,14 +49,19 @@ const BotsPage = () => {
         text: `A ${botClass} bot named ${bot.name} has been added to your army.`,
         icon: "success",
         button: "OK",
+        showCloseButton:true,
         timer: 3000,
       });
     } else {
       Swal.fire({
-        title: "Opps!",
+        title: "Oops....!",
         text: "You cannot add two bots of the same class, choose wisely!",
-        icon: "warning",
+        icon: "error",
         showCancelButton: true,
+        background:'#AA119E',//this is how to add background color to swal alerts
+        color:"#FFFFFF",
+        footer:"Why did this happen. &nbsp <a href='#'>Learn more</a>",
+        showCloseButton:true,
         confirmButtonColor: "#00706e",
         cancelButtonColor: "#ff5154",
         backdrop: `rgba(112, 71, 109, 0.9)
@@ -72,14 +77,20 @@ const BotsPage = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "This bot will serve you well!",
-      icon: "warning",
+      icon: "question",
+      iconColor:"#ff5000",
+      showCloseButton:true,
       showCancelButton: true,
       confirmButtonColor: "#00706e",
       cancelButtonColor: "#ff5154",
-      confirmButtonText: "Yes, I do not want it!",
-      timer: 3000,
+      confirmButtonText: "Yes, I do not want it!"
     }).then((result) => {
       if (result.isConfirmed) {
+        Swal.fire(
+          "Deleted",
+          "bot removed successfully",
+          "success",
+        )
         setSwarm((prevBots) =>
           prevBots.filter((yourBot) => yourBot.id !== bot.id)
         );
@@ -93,6 +104,7 @@ const BotsPage = () => {
       title: "Are you sure?",
       text: "This action will permanently remove the bot",
       icon: "warning",
+      showCloseButton:true,
       showCancelButton: true,
       confirmButtonColor: "#ff5154",
       cancelButtonColor: "#00706e",
