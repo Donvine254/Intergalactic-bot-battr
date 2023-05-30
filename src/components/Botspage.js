@@ -13,7 +13,7 @@ const baseUrl = "http://localhost:8002/bots";
 const BotsPage = () => {
   const [bots, setBots] = useState([]);
   const [swarm, setSwarm] = useState([]);
-  const [displayedBots, setDisplayedBots] = useState([]);//this state can be derived
+  const [displayedBots, setDisplayedBots] = useState([]); //this state can be derived
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSort, setSelectedSort] = useState("All");
 
@@ -41,7 +41,7 @@ const BotsPage = () => {
     if (!swarm.includes(bot) && !existingBotClass) {
       setSwarm((prevBots) => [...prevBots, bot]);
       setDisplayedBots(
-        displayedBots.filter((displayedBot) => displayedBot.id !== bot.id)//removing bot from the bot collection.c
+        displayedBots.filter((displayedBot) => displayedBot.id !== bot.id) //removing bot from the bot collection.c
       );
 
       Swal.fire({
@@ -49,7 +49,7 @@ const BotsPage = () => {
         text: `A ${botClass} bot named ${bot.name} has been added to your army.`,
         icon: "success",
         button: "OK",
-        showCloseButton:true,
+        showCloseButton: true,
         timer: 3000,
       });
     } else {
@@ -58,10 +58,10 @@ const BotsPage = () => {
         text: "You cannot add two bots of the same class, choose wisely!",
         icon: "error",
         showCancelButton: true,
-        background:'#AA119E',//this is how to add background color to swal alerts
-        color:"#FFFFFF",
-        footer:"Why did this happen. &nbsp <a href='#'>Learn more</a>",
-        showCloseButton:true,
+        background: "#AA119E", //this is how to add background color to swal alerts
+        color: "#FFFFFF",
+        footer: "Why did this happen. &nbsp <a href='#'>Learn more</a>",
+        showCloseButton: true,
         confirmButtonColor: "#00706e",
         cancelButtonColor: "#ff5154",
         backdrop: `rgba(112, 71, 109, 0.9)
@@ -78,19 +78,15 @@ const BotsPage = () => {
       title: "Are you sure?",
       text: "This bot will serve you well!",
       icon: "question",
-      iconColor:"#ff5000",
-      showCloseButton:true,
+      iconColor: "#ff5000",
+      showCloseButton: true,
       showCancelButton: true,
       confirmButtonColor: "#00706e",
       cancelButtonColor: "#ff5154",
-      confirmButtonText: "Yes, I do not want it!"
+      confirmButtonText: "Yes, I do not want it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          "Deleted",
-          "bot removed successfully",
-          "success",
-        )
+        Swal.fire("Deleted", "bot removed successfully", "success");
         setSwarm((prevBots) =>
           prevBots.filter((yourBot) => yourBot.id !== bot.id)
         );
@@ -104,7 +100,7 @@ const BotsPage = () => {
       title: "Are you sure?",
       text: "This action will permanently remove the bot",
       icon: "warning",
-      showCloseButton:true,
+      showCloseButton: true,
       showCancelButton: true,
       confirmButtonColor: "#ff5154",
       cancelButtonColor: "#00706e",
@@ -144,6 +140,7 @@ const BotsPage = () => {
 
     setDisplayedBots(filteredBots);
   }
+
   //function to handle sorting bots by health, damage and armor
   function handleSorting(event) {
     const newSortCategory = event.target.value;
@@ -170,7 +167,6 @@ const BotsPage = () => {
 
     return false;
   }
-  
 
   return (
     <div>
