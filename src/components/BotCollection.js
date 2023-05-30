@@ -6,6 +6,8 @@ import BotSpecs from "./BotSpecs";
 
 function BotCollection({ bots, onEnlist, dischargeBot }) {
   const [selectedBot, setSelectedBot] = useState(null);
+
+  //function to display botspecs when the bot is clicked
   const handleBotClick = (bot) => {
     setSelectedBot(bot);
   };
