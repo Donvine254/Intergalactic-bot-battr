@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import BotCard from "./BotCard";
 import BotSpecs from "./BotSpecs";
+// import React, { useState, lazy, Suspense } from "react";
+// const BotCard=  React.lazy(() => import ("./BotCard")); This is how to implement lazy
 
 function BotCollection({ bots, onEnlist, dischargeBot }) {
   const [selectedBot, setSelectedBot] = useState(null);

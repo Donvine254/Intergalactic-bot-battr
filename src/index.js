@@ -1,6 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import App from "./components/App";
 import "./index.css";
+const app = document.getElementById('root');
+const root = createRoot(app);
+root.render(<App/>)
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+//ReactDom is nolonger supported
+
+// ReactDOM.render(<App />, document.getElementById("root"));
