@@ -37,11 +37,12 @@ body {
 }
 
 #header {
-  background-color: blanchedalmond;
+  background-color: #f2f2f2;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  padding:10px;
 }
 
 .bot-logo {
@@ -76,9 +77,11 @@ body {
   align-items: center;
 }
 #footer {
-  background-color: #f2f2f2;
+  background-color:#f2f2f2;
   display: flex;
   justify-content: space-between;
+  border-top: 10px solid #edd3d3;
+  margin-top: 10px;
 }
 
 .about, .payment, .contact {

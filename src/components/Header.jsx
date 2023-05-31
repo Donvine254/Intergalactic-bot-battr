@@ -8,8 +8,7 @@ const Header = () => {
       <div>
         <button className="ui button positive">
           <i className="ui lock icon large"></i>
-
-          Login In</button>
+          Login</button>
         {/* <button className="ui button teal">
           <i className="id card icon large">
           </i>Sign Up</button> */}
