@@ -59,7 +59,8 @@ function BotSpecs({ bot, navigateBack, enlistBot }) {
             <button className="ui button fluid" onClick={handleNavigation}>
               Go Back
             </button>
-            <button className="ui button fluid" onClick={handleClickEnlist}>
+            <br></br>
+            <button className="ui button positive fluid" onClick={handleClickEnlist}>
               Enlist
             </button>
           </div>
