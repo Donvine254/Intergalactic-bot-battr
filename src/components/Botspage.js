@@ -4,6 +4,7 @@ import BotCollection from "./BotCollection";
 import Filter from "./Filter";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Footer from "./Footer";
 
 //initialize bot url for data fetching
 const baseUrl = "http://localhost:8002/bots";
@@ -186,6 +187,7 @@ const BotsPage = () => {
         onEnlist={enlistBot}
         dischargeBot={dischargeBot}
       />
+      <Footer/>
     </div>
   );
 };

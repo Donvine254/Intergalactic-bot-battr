@@ -10,8 +10,8 @@ const botTypeClasses = {
 
 function BotCard({ bot, botFunction, dischargeBot }) {
   return (
-    <div className="ui column">
-      <div className="ui card" key={bot.id}>
+    <div className="ui column custom-card">
+      <div className="ui card " key={bot.id}>
 
         {/* Bot image */}
         <div className="image">
@@ -34,16 +34,16 @@ function BotCard({ bot, botFunction, dischargeBot }) {
         {/* Bot stats */}
         <div className="extra content">
           <span>
-            <i className="icon heartbeat" />
+            <i className="icon heartbeat red large" />
             {bot.health}
           </span>
 
           <span>
-            <i className="icon lightning" />
+            <i className="icon lightning yellow large" />
             {bot.damage}
           </span>
           <span>
-            <i className="icon shield" />
+            <i className="icon shield green large" />
             {bot.armor}
           </span>
 
@@ -53,8 +53,7 @@ function BotCard({ bot, botFunction, dischargeBot }) {
               <button
                 className="ui mini red button"
                 onClick={() => dischargeBot(bot.id)}
-              >
-                x
+              ><i className="ui trash icon large"></i>
               </button>
             </div>
           </span>

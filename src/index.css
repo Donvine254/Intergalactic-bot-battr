@@ -24,7 +24,6 @@ body {
 .ui.grid > .row.bot-army-row {
   flex-wrap: nowrap;
   min-height: 100%;
-
 }
 
 .ui.grid {
@@ -37,69 +36,18 @@ body {
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-select {
-  padding: 0 20px; ;
-  background-color: rgb(27, 179, 179);
-  color:white;
-  width:100%;
-  height: max-content;
-  min-height: 40px;
-  font-size:20px;
-  border-radius: 10px;
-  cursor:pointer;
-
-}
-.filter-container{
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.filter, .sort{
-  display:inline-block;
-  margin:0;
-  padding:0;
-}
-
-
-#header{
+#header {
   background-color: blanchedalmond;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   font-weight: bold;
 }
-.btn{
-  padding:10px;
-  margin:10px;
-  background-color: rgb(27, 179, 179);
-  border-radius: 10px;
-  border:none;
-  font-size:20px;
-  color:azure;
-  font-weight: bold;
-  cursor:pointer;
-}
-.btn:hover{
-  background-color: rgb(4, 85, 27);
-}
-.bot-logo{
+
+.bot-logo {
   font-size: 40px;
   animation: spin 2s infinite linear;
-  display:inline-block;
+  display: inline-block;
 }
 @keyframes spin {
   0% {
@@ -108,4 +56,41 @@ select {
   100% {
     transform: rotate(360deg);
   }
+}
+.custom-dropdown {
+  font-size: 1.6em;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin: 10px;
+  cursor: pointer;
+}
+.custom-select {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: #f2f2f2;
+}
+.custom-container {
+  display: flex;
+  align-items: center;
+}
+#footer {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about, .payment, .contact {
+  display: inline-block;
+  padding: 10px;
+  font-size: 1.3em;
+  margin:10px;
+}
+a{
+  text-decoration: none;
+  color:black;
+}
+a:hover{
+  color:normal;
 }
